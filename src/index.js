@@ -2,13 +2,12 @@ import "./styles/main.css";
 
 const button = document.querySelector("button");
 
-const searchWeather = document.querySelector("input").value.trim().toLowerCase();
 
-async function fetchWeatherData() {
+async function fetchWeatherData(locationName) {
     
     try {
         const response = await fetch(
-            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${searchWeather}?unitGroup=us&key=9LGT3GPK5XZZ8HXPRHZHVSURY&contentType=json`
+            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationName}?unitGroup=us&key=9LGT3GPK5XZZ8HXPRHZHVSURY&contentType=json`
      );
         if (!response.ok) {
             throw new Error("Weather location not found!");
@@ -23,10 +22,13 @@ async function fetchWeatherData() {
     }
 }
 
-button.addEventListener("click", (e) => {
 
+
+button.addEventListener("click", (e) => {
+    const searchWeather = document.querySelector("input").value.trim().toLowerCase();
     e.preventDefault();
-    fetchWeatherData();
-})
+    fetchWeatherData(searchWeather);
+});
+
 
 //TODO: Continue the code
