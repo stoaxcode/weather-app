@@ -1,4 +1,4 @@
-export { fetchWeatherData };
+export { fetchWeatherData, searchWeather };
 
 const locationData = document.querySelector(".location");
 
@@ -18,10 +18,10 @@ const searchWeather = document.getElementById("search-input");
             console.log("Weather Data:", weatherData);
             const weather = weatherData.address;
 
-            console.log("Result found:", weather.trim().toLowerCase());
+            console.log("location found:", weather.trim());
+            locationData.innerText = `${weather}`;
     }catch(err) {
         alert(err.message);
     }
 }
 
-fetchWeatherData(searchWeather);

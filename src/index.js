@@ -1,4 +1,4 @@
-import { fetchWeatherData } from "./modules/apiData.js";
+import { fetchWeatherData, searchWeather } from "./modules/apiData.js";
 import "./styles/main.css";
 
 const weatherResultData = fetchWeatherData;
@@ -9,7 +9,7 @@ const weatherResultData = fetchWeatherData;
 searchWeather.addEventListener("keydown", e => {
     if (e.key === "Enter") {
     e.preventDefault();
-    weatherResultData;
+    weatherResultData(searchWeather.value);
     }
 });
 
