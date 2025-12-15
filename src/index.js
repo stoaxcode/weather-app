@@ -1,7 +1,6 @@
 import "./styles/main.css";
 
-const button = document.querySelector("button");
-
+const searchWeather = document.getElementById("search-input");
 
 async function fetchWeatherData(locationName) {
     
@@ -16,7 +15,7 @@ async function fetchWeatherData(locationName) {
             console.log("Weather Data:", weatherData);
             const weather = weatherData.address;
 
-            console.log("Result found:", weather);
+            console.log("Result found:", weather.trim().toLowerCase());
     }catch(err) {
         alert(err.message);
     }
@@ -24,10 +23,11 @@ async function fetchWeatherData(locationName) {
 
 
 
-button.addEventListener("click", (e) => {
-    const searchWeather = document.querySelector("input").value.trim().toLowerCase();
+searchWeather.addEventListener("keydown", e => {
+    if (e.key === "Enter") {
     e.preventDefault();
-    fetchWeatherData(searchWeather);
+    fetchWeatherData(searchWeather.value);
+    }
 });
 
 
