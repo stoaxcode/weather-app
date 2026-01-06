@@ -1,17 +1,15 @@
-import { fetchWeatherData, searchWeather } from "./modules/apiData.js";
+
+import { searchWeather } from "./modules/apiData.js";
 import "./styles/main.css";
 
-const weatherResultData = fetchWeatherData;
+const searchInput = document.getElementById("search-input");
 
 
-
-
-searchWeather.addEventListener("keydown", e => {
-    if (e.key === "Enter") {
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
     e.preventDefault();
-    weatherResultData(searchWeather.value);
-    }
+    searchWeather(); // ✅ function call
+  }
 });
 
 
-//TODO: Continue the code

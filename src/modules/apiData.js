@@ -1,27 +1,65 @@
+const searchInput = document.getElementById("search-input");
+const locationEl = document.querySelector(".location");
+const tempEl = document.querySelector("#temp");
+const condEl = document.querySelector("#condition");
+const condImg = document.querySelector(".cond-icon");
+
+// API's
+
+const toJSON = (response) => {
+  if (!response.ok) {
+    throw new Error("Weather location not found!");
+  }
+  return response.json();
+};
+
+const apiGet = (url) => fetch(url).then(toJSON);
+
+const buildWeatherUrl = (locationName) =>
+  `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(
+    locationName
+  )}?unitGroup=us&key=9LGT3GPK5XZZ8HXPRHZHVSURY&contentType=json`;
+
+const fetchWeatherData = (locationName) =>
+  apiGet(buildWeatherUrl(locationName));
+
+// Conversion
+
+const pickWeatherLocation = (data) => ({
+  address: data.address,
+  temp: data.currentConditions?.temp,
+  cond: data.currentConditions?.conditions,
+  condIcon: `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/3rd%20Set%20-%20Color/${data.currentConditions?.icon}.png`,
+});
+
+// Renderers
+
+const renderWeather = (weather) => {
+  locationEl.textContent = weather.address;
+  tempEl.textContent = weather.temp;
+  condEl.textContent = weather.cond;
+  condImg.src = weather.condIcon;
+};
+
+const renderError = (err) => {
+  alert(err.message);
+};
+
+// Operator
+
+const searchWeather = async () => {
+  try {
+    const locationName = searchInput.value.trim();
+    if (!locationName) return;
+
+    const data = await fetchWeatherData(locationName);
+    const weather = pickWeatherLocation(data);
+    console.log("Data:", data);
+
+    renderWeather(weather);
+  } catch (err) {
+    renderError(err);
+  }
+};
+
 export { fetchWeatherData, searchWeather };
-
-const locationData = document.querySelector(".location");
-
-const searchWeather = document.getElementById("search-input");
-
-
- async function fetchWeatherData(locationName) {
-    
-    try {
-        const response = await fetch(
-            `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationName}?unitGroup=us&key=9LGT3GPK5XZZ8HXPRHZHVSURY&contentType=json`
-     );
-        if (!response.ok) {
-            throw new Error("Weather location not found!");
-        }
-            const weatherData = await response.json();
-            console.log("Weather Data:", weatherData);
-            const weather = weatherData.address;
-
-            console.log("location found:", weather.trim());
-            locationData.innerText = `${weather}`;
-    }catch(err) {
-        alert(err.message);
-    }
-}
-
