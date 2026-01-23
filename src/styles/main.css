@@ -60,7 +60,6 @@ main {
 }
 
 .content-wrapper-1{
-    border: 1px solid red !important;
     padding: 5px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -74,14 +73,13 @@ main {
 
 .location-wrapper {
     grid-column: span 2 / span 2;
-    border: 1px solid black;
+    padding: 3px;
+    display: flex;
 }
 
 .location {
     font-size: 1.5em;
     color: #ffffff;
-    padding: 10px;
-    text-align: center;
 }
 
 .temp-wrapper {
@@ -89,27 +87,36 @@ main {
     grid-row: span 2 / span 2;
     grid-column-start: 1;
     grid-row-start: 2;
-    border: 1px solid black;
     padding: 3px;
     display: flex;
-    font-size: 3.5em;
+}
+
+.temp {
+    color: #ffffff;
+    font-size: 3em;
 }
 
 .condition-wrapper {
-    grid-row: span 3 / span 3;
+    grid-row: span 2 / span 3;
     grid-column-start: 3;
     grid-row-start: 1;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 5px;
     padding: 3px;
+}
+
+.condition {
+    font-style: 1em;
+    color: #ffffff
 }
 
 .cond-icon {
     width: 80px;
     height: 80px;
     border: none;
+    background: none;
+    outline: none;
 }
+

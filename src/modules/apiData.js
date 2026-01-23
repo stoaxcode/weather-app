@@ -26,11 +26,38 @@ const fetchWeatherData = (locationName) =>
 // Conversion
 
 const pickWeatherLocation = (data) => ({
-  address: data.address,
+  address: data.resolvedAddress,
   temp: data.currentConditions?.temp,
   cond: data.currentConditions?.conditions,
   condIcon: `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/3rd%20Set%20-%20Color/${data.currentConditions?.icon}.png`,
 });
+
+const iconManager = () => {
+    return {
+    hideInvalid: () => {   
+    const images = document.querySelectorAll("img");
+    images.forEach(img => {
+        if (!img.src || img.src === '') {
+        img.style.display = 'none';
+        }
+    });
+    },
+
+    setFallback: (imgElement, src, fallbackSrc = '') => {
+    imgElement.style.display = 'block';
+    imgElement.src = src;
+    imgElement.onerror = () => {
+        if (fallbackSrc) {
+            imgElement.src = fallbackSrc;
+        } else {
+            imgElement.style.display = 'none';
+        }
+    };
+    }
+    };
+}
+
+const icons = iconManager();
 
 // Renderers
 
@@ -38,11 +65,17 @@ const renderWeather = (weather) => {
   locationEl.textContent = weather.address;
   tempEl.textContent = weather.temp;
   condEl.textContent = weather.cond;
-  condImg.src = weather.condIcon;
+  icons.setFallback(condImg, weather.condIcon);
 };
 
 const renderError = (err) => {
-  alert(err.message);
+  console.error("Weather error:", err);
+  
+  locationEl.textContent = "Error";
+  tempEl.textContent = "--";
+  condEl.textContent = "Unable to find weather for this location. Please try again.";
+ 
+    condImg.style.display = 'none';
 };
 
 // Operator
@@ -59,7 +92,8 @@ const searchWeather = async () => {
     renderWeather(weather);
   } catch (err) {
     renderError(err);
+
   }
 };
 
-export { fetchWeatherData, searchWeather };
+export { fetchWeatherData, searchWeather, iconManager };
