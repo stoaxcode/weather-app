@@ -1,9 +1,11 @@
-const searchInput = document.getElementById("search-input");
+const searchInput = document.querySelector("#search-input");
 const locationEl = document.querySelector(".location");
 const tempEl = document.querySelector("#temp");
 const condEl = document.querySelector("#condition");
 const condImg = document.querySelector(".cond-icon");
 const windSpeed = document.querySelector("#wind");
+const rainChance = document.querySelector("#rain");
+const uvIndex = document.querySelector("#uv");
 
 // API's
 
@@ -32,6 +34,8 @@ const pickWeatherLocation = (data) => ({
   cond: data.currentConditions?.conditions,
   condIcon: `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/3rd%20Set%20-%20Color/${data.currentConditions?.icon}.png`,
   wind: data.currentConditions?.windspeed,
+  rain: data.currentConditions?.precipprob,
+  uv: data.currentConditions?.uvindex,
 });
 
 const iconManager = () => {
@@ -68,7 +72,9 @@ const renderWeather = (weather) => {
   tempEl.textContent = weather.temp;
   condEl.textContent = weather.cond;
   icons.setFallback(condImg, weather.condIcon);
-  windSpeed.textContent = weather.wind;
+  windSpeed.textContent = `${weather.wind} mph`;
+  rainChance.textContent = `${weather.rain}%`;
+  uvIndex.textContent = weather.uv;
 };
 
 const renderError = (err) => {
