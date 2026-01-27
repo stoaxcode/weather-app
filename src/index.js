@@ -1,5 +1,5 @@
 
-import { searchWeather } from "./modules/apiData.js";
+import { searchWeather, iconManager} from "./modules/apiData.js";
 import "./styles/main.css";
 
 document.addEventListener('DOMContentLoaded', () => {
