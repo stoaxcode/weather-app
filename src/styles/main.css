@@ -120,3 +120,37 @@ main {
     outline: none;
 }
 
+/** Weather Contents 2 **/
+
+.content-wrapper-2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; 
+}
+
+.wind-rain-sun {
+    grid-area: 1 / 1 / 2 / 5;
+    border: 1px solid blue;
+}
+
+.feelslike {
+    grid-area: 2 / 1 / 3 / 2;
+    border: 1px solid red;
+}
+
+.humidity { 
+    grid-area: 2 / 2 / 3 / 3;
+    border: 1px solid red;
+}
+
+.visibility { 
+    grid-area: 2 / 3 / 3 / 4;
+    border: 1px solid red;
+}
+
+.pressure { 
+    grid-area: 2 / 4 / 3 / 5;
+    border: 1px solid red;
+} 
