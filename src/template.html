@@ -1,129 +1,95 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xweather</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <main>
-      <input
-        type="text"
-        name="text"
-        class="search-input"
-        id="search-input"
-        placeholder="Search for a city..."
-        required
-      />
-      <div class="weather-contents">
-        <div class="content-wrapper-1">
-          <div class="location-wrapper">
-            <span class="location" id="location"></span>
-          </div>
-          <div class="temp-wrapper">
-            <span class="temp" id="temp"></span>
-          </div>
-          <div class="condition-wrapper">
-            <img src="#" class="cond-icon" style="display: none" />
-            <span class="condition" id="condition"></span>
-          </div>
+        <input type="text" name="text" class="search-input" id="search-input" placeholder="Search for a city..."
+            required />
+        <div class="weather-contents">
+            <div class="content-wrapper-1">
+                <div class="location-wrapper">
+                    <span class="location" id="location"></span>
+                </div>
+                <div class="temp-wrapper">
+                    <span class="temp" id="temp"></span>
+                </div>
+                <div class="condition-wrapper">
+                    <img src="#" class="cond-icon" style="display: none" />
+                    <span class="condition" id="condition"></span>
+                </div>
+            </div>
+            <div class="content-wrapper-2">
+                <div class="wind-rain-sun">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-wind">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" />
+                        <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" />
+                        <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+                    </svg>
+                    <span class="wind" id="wind"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-rain">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+                        <path d="M11 13v2m0 3v2m4 -5v2m0 3v2" />
+                    </svg>
+                    <span class="rain" id="rain"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-sun">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                        <path
+                            d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                    </svg>
+                    <span class="uv" id="uv"></span>
+                </div>
+                <div class="feelslike">
+                    <img src="#" alt="" />
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="humidity">
+                    <img src="#" alt="" />
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="visibility">
+                    <img src="#" alt="" />
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="pressure">
+                    <img src="#" alt="" />
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span></span>
+                </div>
+                <div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
         </div>
-        <div class="content-wrapper-2">
-          <div class="wind-rain-sun">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-wind"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" />
-              <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" />
-              <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
-            </svg>
-            <span class="wind" id="wind"></span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-rain"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path
-                d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7"
-              />
-              <path d="M11 13v2m0 3v2m4 -5v2m0 3v2" />
-            </svg>
-            <span class="rain" id="rain"></span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-sun"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-              <path
-                d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
-              />
-            </svg>
-            <span class="uv" id="uv"></span>
-          </div>
-          <div class="feelslike">
-            <img src="#" alt="" />
-            <span></span>
-            <span></span>
-          </div>
-          <div class="humidity">
-            <img src="#" alt="" />
-            <span></span>
-            <span></span>
-          </div>
-          <div class="visibility">
-            <img src="#" alt="" />
-            <span></span>
-            <span></span>
-          </div>
-          <div class="pressure">
-            <img src="#" alt="" />
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-        <div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      </div>
     </main>
-  </body>
+</body>
+
 </html>

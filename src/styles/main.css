@@ -5,22 +5,28 @@ box-sizing: border-box;
 font-family: 'NotoSans-Reg';
 }
 
+:root {
+    --white: #ffffff;
+    --bodyBlue: #4194ff;
+}
+
 @font-face {
-  font-family: 'NotoSans-Reg';
-  src: url('./NotoSans-Regular.woff2') format('woff2');
+  font-family: 'Dosis-Reg';
+  src: url('./Dosis-Regular.woff') format('woff');
 
   font-weight: 600;
   font-style: normal;
 }
 
-
+/** Fix font **/
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #4194FF;
+    background-color: var(--bodyBlue);
+    font-family: 'Dosis-Reg';
 }
 
 main {
@@ -31,7 +37,7 @@ main {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    
+   font-family: 'Dosis-Reg'; 
 }   
 
 .search-input {
@@ -41,8 +47,8 @@ main {
     padding-left: 40px;
     outline: none;
     background: none;
-    border: 1px solid #fff;
-    color: #fff;
+    border: 1px solid var(--white);
+    color: var(--white);
     font-size: 1rem;
     border-radius: 55px;
 }
@@ -50,7 +56,7 @@ main {
 .weather-contents {
     width: 100%;
     height: 90%;
-    border: 1px solid #fff;
+    border: 1px solid var(--white);
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -79,7 +85,7 @@ main {
 
 .location {
     font-size: 1.5em;
-    color: #ffffff;
+    color: var(--white);
 }
 
 .temp-wrapper {
@@ -92,7 +98,7 @@ main {
 }
 
 .temp {
-    color: #ffffff;
+    color: var(--white);
     font-size: 3em;
 }
 
@@ -109,7 +115,7 @@ main {
 
 .condition {
     font-style: 1em;
-    color: #ffffff
+    color: var(--white);
 }
 
 .cond-icon {
@@ -138,8 +144,9 @@ main {
 }
 
 .wind-rain-sun > span {
-    border: 1px solid red;
     margin: 0 15px 0 10px;
+    color: var(--white);
+    font-size: 1em;
 }
 
 .feelslike {
