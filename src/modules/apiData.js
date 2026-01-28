@@ -74,7 +74,7 @@ const renderWeather = (weather) => {
   icons.setFallback(condImg, weather.condIcon);
   windSpeed.textContent = `${weather.wind} mph`;
   rainChance.textContent = `${weather.rain}%`;
-  uvIndex.textContent = weather.uv;
+  uvIndex.textContent = `UV ${weather.uv}`;
 };
 
 const renderError = (err) => {
